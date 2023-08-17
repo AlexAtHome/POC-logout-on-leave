@@ -1,5 +1,10 @@
 <h1>Dashboard</h1>
 
 <p>Welcome, {{ username }}</p>
+<p>Let's play a game!</p>
+
+<div [style.fontSize.rem]="4">{{ counter() }}</div>
+
+<button (click)="count()">Press me!</button>
 
 <button (click)="logout()">Log out</button>
