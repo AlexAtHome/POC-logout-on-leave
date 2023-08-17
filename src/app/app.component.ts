@@ -11,6 +11,9 @@ import { RouterOutlet } from '@angular/router';
 export class AppComponent {
   @HostListener('window:beforeunload')
   logout(): void {
-    navigator.sendBeacon('/api/logout')
+    fetch('/api/logout', {
+      method: 'DELETE',
+      keepalive: true
+    })
   }
 }
