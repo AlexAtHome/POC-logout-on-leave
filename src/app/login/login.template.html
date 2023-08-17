@@ -1,0 +1,10 @@
+<h1>Login</h1>
+
+<form [formGroup]="form" (submit)="login()" class="form">
+  <div class="form-control">
+    <label for="username">Your name</label>
+    <input type="text" formControlName="username" id="username">
+  </div>
+
+  <button>Log in</button>
+</form>

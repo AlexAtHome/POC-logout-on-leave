@@ -28,11 +28,10 @@ app.use(koaBody({ json: true }))
 app.use(session(CONFIG, app))
 
 router.post("/login", async (ctx) => {
-  const { body } = ctx.request
-  const username = body.username
+  const { username } = ctx.request.body
   ctx.session.regenerate()
   ctx.session.username = username
-  console.log('login ctx.session', ctx.session)
+  ctx.session.save()
   ctx.body = {
     username
   };

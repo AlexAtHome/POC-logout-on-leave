@@ -1,1 +1,27 @@
 /* You can add global styles to this file, and also import other style files */
+
+html {
+  font-size: 24px;
+}
+
+body {
+  font-size: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+button, input {
+  font-size: 1rem;
+}
+
+.form,
+.form-control {
+  display: flex;
+  flex-direction: column;
+}
+
+.form {
+  gap: 30px;
+}
