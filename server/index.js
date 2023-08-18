@@ -29,22 +29,22 @@ app.use(session(CONFIG, app))
 
 router.post("/login", async (ctx) => {
   const { username } = ctx.request.body
+  console.warn('POST /login Authorized as', username)
   ctx.session.regenerate()
   ctx.session.username = username
   ctx.session.save()
   ctx.body = {
     username
   };
-  console.warn('POST /login Authorized as', username)
 });
 
 router.get("/whoami", async (ctx) => {
-  console.log('whoami ctx.session', ctx.session)
+  console.warn('GET /whoami')
   try {
+    console.warn('GET /whoami Welcome,', ctx.session.username)
     ctx.body = {
       username: ctx.session.username
     };
-    console.warn('GET /whoami Welcome,', ctx.session.username)
   } catch (error) {
     console.log(error)
     ctx.status = 401
@@ -54,12 +54,12 @@ router.get("/whoami", async (ctx) => {
   }
 });
 
-router.delete("/logout", async (ctx) => {
+router.post("/logout", async (ctx) => {
+  console.warn(`POST /logout 'k byeeeeeeeeeeeeeee ${ctx.session.username}`)
   ctx.session = null
   ctx.body = {
     done: true
   };
-  console.warn('DELETE /logout Unauthorized the user')
 });
 
 app.use(router.routes());

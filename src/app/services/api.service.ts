@@ -31,7 +31,7 @@ export class API {
   }
 
   logOut(): Observable<unknown> {
-    return this.http.delete("/api/logout", { observe: "body" }).pipe(
+    return this.http.post("/api/logout", { observe: "body" }).pipe(
       tap(() => {
         this.whoamiSubject.next(null);
       })
